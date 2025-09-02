@@ -1,0 +1,22 @@
+
+# Linters and formatters
+.ruff_cache/
+.ruff.toml
+.ruff.log
+.mypy_cache/
+.pytest_cache/
+.pylint.d/
+.pylintrc
+.flake8
+.coverage
+coverage.xml
+
+# ESLint
+.eslintcache
+.eslintignore
+.eslintrc.js
+.eslintrc.json
+.eslintrc.yaml
+.eslintrc.yml
+
+node_modules

@@ -1,0 +1,66 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  backend:
+    name: Backend (Black/Ruff/Tests)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/backend
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Install uv
+        run: pipx install uv
+
+      - name: Install deps (uv)
+        run: uv sync --frozen
+
+      - name: Ruff (lint + report)
+        run: uv run ruff check .
+
+      - name: Black (check)
+        run: uv run black . --check
+
+      - name: Pytest
+        run: uv run pytest -q
+        if: ${{ hashFiles('**/tests/**/*', '**/test_*.py') != '' }}
+
+  frontend:
+    name: Frontend (ESLint/Prettier/Build)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/frontend
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Use Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "pnpm"
+
+      - name: Install deps
+        run: pnpm install --frozen-lockfile
+
+      - name: ESLint
+        run: pnpm lint
+
+      - name: Prettier (check)
+        run: pnpm prettier --check "src/**/*.{ts,tsx,js,jsx,json,css,md}"
