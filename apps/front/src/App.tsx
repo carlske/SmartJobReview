@@ -1,12 +1,12 @@
-import SearchBar from './features/job/components/SearchBar';
-import JobListingsSidebar from './features/job/components/JobListingsSidebar';
+import JobListingsSidebar from './features/job/components/ListingsSidebar/JobListingsSidebar';
 import JobLoadPdf from './features/job/components/JobLoadPdf';
 import JobDetails from './features/job/components/JobDetails';
+import JobSearchBar from './features/job/components/JobSearchBar';
 
 export default function App() {
   return (
     <div className="min-h-screen bg-gray-50">
-      <SearchBar />
+      <JobSearchBar />
       <JobLoadPdf />
 
       <main>

@@ -1,10 +1,3 @@
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@radix-ui/react-select';
 import { Card, CardContent, CardHeader } from '@/shared/ui/card';
 import { Badge, MapPin } from 'lucide-react';
 import { useState } from 'react';
@@ -117,16 +110,6 @@ const JobDescription = () => {
         <CardHeader className="pb-3">
           <div className="flex justify-between items-center">
             <span className="text-sm text-gray-600">677 jobs</span>
-            <Select defaultValue="priority">
-              <SelectTrigger className="w-40">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="priority">Company Priority</SelectItem>
-                <SelectItem value="recent">Most Recent</SelectItem>
-                <SelectItem value="relevant">Most Relevant</SelectItem>
-              </SelectContent>
-            </Select>
           </div>
         </CardHeader>
         <CardContent className="p-0">

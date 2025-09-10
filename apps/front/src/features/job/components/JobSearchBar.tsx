@@ -1,8 +1,14 @@
 import { Filter, MapPin, Search } from 'lucide-react';
 import { Input } from '@/shared/ui/input';
 import { Button } from '@/shared/ui/button';
+import useNavigation from '@/shared/hooks/useNavigation';
 
-const SearchBar = () => {
+const JobSearchBar = () => {
+  const { position, error } = useNavigation();
+
+  console.log('Geolocation Position:', position);
+  console.log('Geolocation Error:', error);
+
   return (
     <nav className="bg-white border-b">
       <div className="max-w-7xl mx-auto px-4 py-4">
@@ -18,17 +24,20 @@ const SearchBar = () => {
             <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
             <Input placeholder="Search for location" className="pl-10 h-12" />
           </div>
-          <Button className="bg-indigo-900 hover:bg-indigo-800 h-12 px-8 cursor-pointer">
+          <Button className="bg-indigo-900  hover:bg-indigo-800 h-12 px-8 cursor-pointer">
             Search jobs
           </Button>
         </div>
 
         <div className="flex gap-4 mt-4">
-          <Button variant="outline" className="flex items-center gap-2 bg-transparent">
+          <Button
+            variant="outline"
+            className=" cursor-pointer flex items-center gap-2 bg-transparent"
+          >
             <Filter className="w-4 h-4" />
             All Filters
           </Button>
-          <Button variant="ghost" className="text-gray-600">
+          <Button variant="ghost" className="cursor-pointer text-gray-600">
             Clear All
           </Button>
         </div>
@@ -37,4 +46,4 @@ const SearchBar = () => {
   );
 };
 
-export default SearchBar;
+export default JobSearchBar;

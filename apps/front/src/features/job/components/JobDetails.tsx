@@ -1,7 +1,7 @@
 import { Button } from '@/shared/ui/button';
 import { Card, CardContent } from '@/shared/ui/card';
 import { Badge, MapPin } from 'lucide-react';
-import JobDescription from './JobListingsSidebar';
+import JobInformation from './JobInformation';
 
 const JobDetails = () => {
   return (
@@ -28,7 +28,7 @@ const JobDetails = () => {
         </CardContent>
       </Card>
 
-      <JobDescription />
+      <JobInformation />
     </div>
   );
 };
